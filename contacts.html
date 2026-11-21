@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Контактная информация учебного проекта ТехноМаркет.">
-  <title>ТехноМаркет — Контакты</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТехноМаркет — Контакты</title><link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html"><span class="logo-mark">Т</span>Техно<span>Маркет</span></a>
-      <nav aria-label="Основная навигация">
-        <a href="index.html">Главная</a><a href="about.html">О проекте</a><a class="active" href="contacts.html">Контакты</a>
-      </nav>
-    </div>
-  </header>
-  <main class="container inner-page">
-    <p class="eyebrow">МЫ НА СВЯЗИ</p>
-    <h1>Связаться <span>с нами</span></h1>
-    <p class="lead">Это демонстрационная страница контактов учебного интернет-магазина.</p>
-    <div class="contact-layout">
-      <section class="contact-card">
-        <h2>Контактная информация</h2>
-        <div class="contact-row"><span class="contact-symbol">@</span><div><p class="muted">Электронная почта</p><p><a href="mailto:yuriykarasev36@gmail.com">yuriykarasev36@gmail.com</a></p></div></div>
-        <div class="contact-row"><span class="contact-symbol">⌂</span><div><p class="muted">Адрес</p><p>г. Воронеж, улица Университетская, дом 1</p></div></div>
-        <div class="contact-row"><span class="contact-symbol">◷</span><div><p class="muted">Время ответа</p><p>В рамках учебного задания</p></div></div>
-      </section>
-      <aside class="contact-note"><div class="note-mark">✦</div><h2>Есть вопросы?</h2><p>По вопросам о товарах и работе магазина можно написать на электронную почту или обратиться по указанному адресу.</p><a href="about.html" class="text-link">Подробнее о проекте →</a></aside>
-    </div>
-  </main>
-  <footer class="site-footer"><div class="container footer-inner"><a class="logo" href="index.html"><span class="logo-mark">Т</span>Техно<span>Маркет</span></a><p>Учебный сайт · Автор: Юрий</p><p>© 2026</p></div></footer>
-</body>
-</html>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">ТЕХНО<span>МАРКЕТ</span></a><nav aria-label="Основная навигация"><a class="nav-link-custom" href="index.html">Главная</a><a class="nav-link-custom" href="about.html">О проекте</a><a class="nav-link-custom active" href="contacts.html">Контакты</a></nav></div></header>
+<main class="container page-main">
+  <p class="eyebrow">МЫ НА СВЯЗИ</p><h1>Связаться с <span>нами</span></h1>
+  <div class="contact-layout">
+    <section class="content-panel"><h2>Контактная информация</h2><p><strong>Email:</strong> <a href="mailto:yuriykarasev36@gmail.com">yuriykarasev36@gmail.com</a></p><p><strong>Адрес:</strong> г. Воронеж, улица Университетская, дом 1</p><p class="muted">Заполните форму, и сайт покажет результат проверки.</p></section>
+    <section class="content-panel"><h2>Форма обратной связи</h2>
+      <form id="contactForm" novalidate>
+        <label for="name">Имя</label><input id="name" name="name" type="text" placeholder="Ваше имя" required>
+        <label for="email">Email</label><input id="email" name="email" type="email" placeholder="name@example.com" required>
+        <label for="comment">Сообщение</label><textarea id="comment" name="comment" rows="4" placeholder="Ваше сообщение" required></textarea>
+        <button class="btn-neon" type="submit">Отправить</button>
+      </form>
+      <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+    </section>
+  </div>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><span>© 2026 ТехноМаркет</span><span>Учебный проект • Автор: Юрий</span></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script></body></html>
