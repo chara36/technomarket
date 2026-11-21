@@ -12,15 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Проверка формы без перезагрузки страницы
+  
+  // Проверка и отправка формы на почту
   const contactForm = document.querySelector('#contactForm');
+
   if (contactForm) {
     const nameInput = document.querySelector('#name');
     const emailInput = document.querySelector('#email');
     const commentInput = document.querySelector('#comment');
     const formMessage = document.querySelector('#formMessage');
 
-    contactForm.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+
       const name = nameInput.value.trim();
       const email = emailInput.value.trim();
       const comment = commentInput.value.trim();
@@ -31,9 +35,38 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      formMessage.textContent = `Спасибо, ${name}! Форма заполнена корректно.`;
-      formMessage.className = 'form-message success';
-      contactForm.reset();
+      formMessage.textContent = 'Отправляем сообщение...';
+      formMessage.className = 'form-message';
+
+      const formData = new FormData(contactForm);
+      formData.append('_subject', 'Сообщение с сайта ТехноМаркет');
+      formData.append('_captcha', 'false');
+
+      try {
+        const response = await fetch(
+          'https://formsubmit.co/ajax/yuriykarasev36@gmail.com',
+          {
+            method: 'POST',
+            body: formData,
+            headers: {
+              Accept: 'application/json'
+            }
+          }
+        );
+
+        const result = await response.json();
+
+        if (response.ok && result.success === 'true') {
+          formMessage.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
+          formMessage.className = 'form-message success';
+          contactForm.reset();
+        } else {
+          throw new Error('Ошибка отправки');
+        }
+      } catch (error) {
+        formMessage.textContent = 'Не удалось отправить сообщение. Попробуй ещё раз.';
+        formMessage.className = 'form-message error';
+      }
     });
   }
 
